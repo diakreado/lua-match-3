@@ -1,4 +1,4 @@
-local lib = require "./lib/api"
+local lib = require "./game-logic/index"
 
 lib.init()
 
@@ -25,9 +25,10 @@ drawField(lib.dump())
 
 print()
 
-lines = lib.checkFields()
+-- lines = lib.checkMatch()
 
-for i=1,#lines do
-  print(lines[i].pos, lines[i].i, lines[i].j, lines[i].k)
-end
+-- for i=1,#lines do
+--   print(lines[i].pos, lines[i].i, lines[i].j, lines[i].k)
+-- end
 
+print(lib.findMove())
