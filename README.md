@@ -1,5 +1,8 @@
 # lua-match-3
 
+[![Build Status](https://travis-ci.com/mikle9997/lua-match-3.svg?branch=master)](https://travis-ci.com/mikle9997/lua-match-3)
+
+
 ## Dev-dependences:
 
 | Name | Links |
