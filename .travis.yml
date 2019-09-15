@@ -13,3 +13,7 @@ before_install:
 
 script:
   - docker run --rm maltsevms/lua-match-3
+
+branches:
+  only:
+    - master
