@@ -8,7 +8,7 @@ findMatch
   arg         - field (2d array) in rectangular form
 
   return      - table with matches
-                example - {
+                output example - {
                   {orientation = 'h', x = 10, y = 8, len = 3}
                   {orientation = 'v', x = 6,  y = 2, len = 4}
                 }
@@ -19,6 +19,7 @@ findMatch
                           coordinate start from 1
                   * len - length of match
 --]]
+
 return function(field)
   local lines = {}
 

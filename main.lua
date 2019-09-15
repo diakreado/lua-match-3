@@ -5,7 +5,7 @@ lib.init()
 function drawField(field)
   io.write('   ')
   for i = 1, #field[1] do
-    io.write(i - 1 .. ' ')
+    io.write(i .. ' ')
   end
   io.write('\n  ')
   for i = 1, #field[1] do
@@ -13,7 +13,7 @@ function drawField(field)
   end
   io.write('\n')
   for i = 1, #field do
-    io.write(i - 1 .. ' | ')
+    io.write(i .. ' | ')
     for j = 1, #field[i] do
       io.write(field[i][j] .. ' ')
     end
@@ -24,11 +24,3 @@ end
 drawField(lib.dump())
 
 print()
-
--- lines = lib.checkMatch()
-
--- for i=1,#lines do
---   print(lines[i].pos, lines[i].i, lines[i].j, lines[i].k)
--- end
-
-print(lib.findMove())
