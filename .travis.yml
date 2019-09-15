@@ -1,0 +1,15 @@
+
+language: generic
+
+sudo: required
+
+dist: trusty
+
+services:
+  - docker
+
+before_install:
+  - docker build -t maltsevms/lua-match-3 .
+
+script:
+  - docker run --rm maltsevms/lua-match-3
