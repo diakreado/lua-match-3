@@ -12,13 +12,13 @@ findMove
                   x,y - coordinate of the point
                         x - horizontal, y - vertical
                         coordinate start from 1
-                  nil - if point isn't exist
+                  nil - if point or arg isn't exist
                 }
 --]]
 
 return function(field)
-  local isMovePossible = false
-
+  
+  if field == nil then return nil end
   if #field < 1 then return nil end
 
   local ySize = #field

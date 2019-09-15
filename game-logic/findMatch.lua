@@ -11,6 +11,8 @@ findMatch
                 output example - {
                   {orientation = 'h', x = 10, y = 8, len = 3}
                   {orientation = 'v', x = 6,  y = 2, len = 4}
+                  {}  - if lines aren't exist
+                  nil - if arg isn't exist
                 }
                 where:
                   * orientation: 'h' - horizontal, 'v' - vertical
@@ -23,6 +25,7 @@ findMatch
 return function(field)
   local lines = {}
 
+  if field == nil then return nil end
   if #field < 1 then return lines end
 
   local ySize = #field
