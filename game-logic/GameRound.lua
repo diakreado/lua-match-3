@@ -2,6 +2,8 @@
 local findMatch    = require('GameRound-logic/findMatch')
 local findMove     = require('GameRound-logic/findMove')
 local randomLetter = require('GameRound-logic/randomLetter')
+local swapItems    = require('GameRound-logic/swapItems')
+local verifyMove   = require('GameRound-logic/verifyMove')
 
 
 local GameRound = {} -- class
@@ -24,30 +26,37 @@ local GameRound = {} -- class
     end
   end
 
-  function GameRound:tick()
+  --[[
 
     -- удаляет и сдвигает
     -- delete matches
     -- increase score
     -- add new items to the field
 
+  --]]
+  function GameRound:tick()
+
     print(GameRound.ySize)
   end
+
 
   --[[
     args - (from, to) are points
             point format - {x, y}
             where x,y are int
-  --]]
-  function GameRound:move(from, to)
 
     -- делает ход изменяет поле, если никто не против
     -- from - to = 1
     -- after change we get match 3 or more
+  --]]
+  function GameRound:move(from, to)
 
+    if verifyMove(GameRound.feild, from, to) then  
+
+      swapItems(GameRound.field, from, to)
+    end 
     
-
-    print(GameRound.ySize)
+    return 'lol'
   end
 
   function GameRound:mix()

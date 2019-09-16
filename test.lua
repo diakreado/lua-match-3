@@ -1,7 +1,9 @@
-lu = require('luaunit')
-findMatch = require('game-logic/findMatch')
-findMove = require('game-logic/findMove')
-swapItems = require('game-logic/swapItems')
+local lu = require('luaunit')
+local findMatch = require('game-logic/findMatch')
+local findMove = require('game-logic/findMove')
+local swapItems = require('game-logic/swapItems')
+local verifyMove = require('game-logic/verifyMove')
+
 
 TestFindMatch = {} -- class
 
@@ -17,7 +19,7 @@ TestFindMatch = {} -- class
       {orientation = 'v', x = 3, y = 1, len = 4}
     })
   end
-  
+
 -- class TestFindMatch
 
 
@@ -69,5 +71,29 @@ TestSwapItems = {} -- class
   end
   
 -- class TestSwapItems
+
+TestVerifyMove = {} -- class
+
+  function TestVerifyMove:testExample()
+    local field = {
+      {'A','B','F','A'},
+      {'D','C','E','E'},  -- [2][3] -> E -> B
+      {'A','B','F','A'},
+      {'D','C','B','A'}
+    }
+    lu.assertEquals( verifyMove(field, { x=3, y=2 }, { x=2, y=2 }), false ) -- E [2][3]
+    field[2][3] = 'B'
+    lu.assertEquals( verifyMove(field, { x=3, y=2 }, { x=2, y=2 }), true )-- B [2][3]
+    
+    lu.assertEquals( verifyMove(field, { x=3, y=2 }, { x=1, y=2 }), false ) -- B [2][3]
+
+    lu.assertEquals( verifyMove(field, { x=4, y=1 }, { x=4, y=2 }), true ) -- A [1][4]
+
+    lu.assertEquals( verifyMove(field, { x=4, y=3 }, { x=4, y=3 }), false ) -- A [3][4]
+    lu.assertEquals( verifyMove(field, { x=4, y=3 }, { x=4, y=4 }), false ) -- A [3][4]
+    lu.assertEquals( verifyMove(field, { x=4, y=3 }, { x=4, y=2 }), false ) -- A [3][4]
+  end
+
+-- class TestVerifyMove
 
 os.exit( lu.LuaUnit.run() )
