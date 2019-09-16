@@ -3,7 +3,7 @@
 swapItems
 
   arg         - feild, which will be changed
-              - from, to - points
+              - (const from), (const to) - points
 
   return      - void
 --]]

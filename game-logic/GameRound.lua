@@ -26,6 +26,7 @@ local GameRound = {} -- class
     end
   end
 
+
   --[[
 
     -- удаляет и сдвигает
@@ -41,22 +42,25 @@ local GameRound = {} -- class
 
 
   --[[
-    args - (from, to) are points
-            point format - {x, y}
-            where x,y are int
+    description - make move if it's possible: 
+                        * points 'to' and 'from' are nearby,
+                        * items aren't equal,
+                        * move leads to match 3
 
-    -- делает ход изменяет поле, если никто не против
-    -- from - to = 1
-    -- after change we get match 3 or more
+    args        - (const from, const to) are points
+                  point format - {x, y}
+                  where x,y are int
+    
+    return      - bool
+                    true  - if move was complete
+                    false - if move wasn't complete
   --]]
   function GameRound:move(from, to)
-
-    if verifyMove(GameRound.feild, from, to) then  
-
+    if verifyMove(GameRound.feild, from, to) then
       swapItems(GameRound.field, from, to)
+      return true
     end 
-    
-    return 'lol'
+    return false
   end
 
   function GameRound:mix()

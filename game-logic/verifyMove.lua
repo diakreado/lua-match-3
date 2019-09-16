@@ -8,6 +8,9 @@ verifyMove
 
   args        - const field (2d array)
 
+  return      - bool
+                  true  - if move is possible
+                  false - if move isn't possible
 --]]
 
 return function(field, from, to) 
