@@ -1,21 +1,21 @@
 
-local findMatch    = require('game-logic/findMatch')
-local findMove     = require('game-logic/findMove')
-local randomLetter = require('game-logic/randomLetter')
-local swapItems    = require('game-logic/swapItems')
-local verifyMove   = require('game-logic/verifyMove')
+local findMatch             = require('game-logic/findMatch')
+local findMove              = require('game-logic/findMove')
+local randomLetter          = require('game-logic/randomLetter')
+local swapItems             = require('game-logic/swapItems')
+local verifyMove            = require('game-logic/verifyMove')
+local removeFallAndCreate   = require('game-logic/removeFallAndCreate')
 
 
 local GameRound = {} -- class
 
   GameRound.ySize = 9
   GameRound.xSize = 9
+
+  GameRound.score = 0
+
   GameRound.field = {}
 
-  function GameRound.lol(arg1)
-    print(arg1)
-    print(arg1)
-  end
 
   function GameRound.init(field)
 
@@ -47,22 +47,17 @@ local GameRound = {} -- class
 
 
   --[[
-
-    -- удаляет и сдвигает
     -- delete matches
     -- increase score
     -- add new items to the field
-
   --]]
   function GameRound.tick()
-
     local matches = findMatch(GameRound.field)
-
     for i = 1, #matches do
-      print(matches[i].orientation, matches[i].x, matches[i].y, matches[i].len)
+      GameRound.score = GameRound.score + matches[i].len - 2
     end
 
-    print(GameRound.ySize)
+    removeFallAndCreate(GameRound.field, matches)
   end
 
 
@@ -89,7 +84,17 @@ local GameRound = {} -- class
   end
 
   function GameRound.mix()
-    print(GameRound.ySize)
+    math.randomseed( os.time() )
+    local t = GameRound.field
+    local rand = math.random
+
+    for i = 1, GameRound.xSize * GameRound.ySize do
+      local y2 = rand(GameRound.ySize)
+      local y1 = rand(GameRound.ySize)
+      local x2 = rand(GameRound.xSize)
+      local x1 = rand(GameRound.xSize)
+      t[y1][x1], t[y2][x2] = t[y2][x2], t[y1][x1]
+    end
   end
 
   function GameRound.dump()

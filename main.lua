@@ -26,7 +26,29 @@ local function drawField(field)
   end
 end
 
+-- lib.move( { x=2, y=2 }, { x=1, y=2 } )
+
+-- drawField(lib.dump())
+-- print()
+
+-- lib.tick()
+
+-- drawField(lib.dump())
+-- print()
+
+-- lib.move( { x=2, y=2 }, { x=3, y=2 } )
+
+-- drawField(lib.dump())
+-- print()
+
+-- lib.tick()
 
 drawField(lib.dump())
 print()
+
+lib.mix()
+
+drawField(lib.dump())
+print()
+
 
