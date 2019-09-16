@@ -13,18 +13,10 @@ verifyMove
                   false - if move isn't possible
 --]]
 
-return function(field, from, to) 
+local checkPossibleMatch = function(field, from, to)
   local fromValue = field[from.y][from.x]
   
-  return  -- check not equal
-          ( fromValue ~= field[to.y][to.x] ) and 
-
-          -- check that points are nearby
-          ( math.abs(from.x - to.x) == 1 and from.y == to.y or
-            math.abs(from.y - to.y) == 1 and from.x == to.x )   and
-
-          -- check move leads to match 3
-          (( from.y ~= (to.y+1) and field[to.y+1] ~= nil and fromValue == field[to.y+1][to.x] and 
+  return  (( from.y ~= (to.y+1) and field[to.y+1] ~= nil and fromValue == field[to.y+1][to.x] and 
               ( from.y ~= (to.y+2) and field[to.y+2] ~= nil and fromValue == field[to.y+2][to.x] or
                 from.y ~= (to.y-1) and field[to.y-1] ~= nil and fromValue == field[to.y-1][to.x] )
           ) or
@@ -40,4 +32,21 @@ return function(field, from, to)
               ( from.x ~= (to.x+1) and fromValue == field[to.y][to.x+1] or
                 from.x ~= (to.x-2) and fromValue == field[to.y][to.x-2] )
           ))
+end
+
+
+return function(field, from, to) 
+  local fromValue = field[from.y][from.x]
+  
+  return  -- check not equal
+          ( fromValue ~= field[to.y][to.x] ) and 
+
+          -- check that points are nearby
+          ( math.abs(from.x - to.x) == 1 and from.y == to.y or
+            math.abs(from.y - to.y) == 1 and from.x == to.x )   and
+
+          -- check move leads to match 3
+          ( checkPossibleMatch(field, from, to) or
+            checkPossibleMatch(field, to, from) )
+
 end

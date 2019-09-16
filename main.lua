@@ -1,10 +1,13 @@
-local lib = require "./game-logic/GameRound"
-findMatch = require('game-logic/findMatch')
-findMove = require('game-logic/findMove')
+local lib = require('game-logic/GameRound')
 
-lib.init()
-
-function drawField(field)
+lib.init({
+  {'A','B','F','A'},
+  {'A','D','B','E'},
+  {'D','B','C','A'},
+  {'D','B','B','A'}
+})
+ 
+local function drawField(field)
   io.write('    ')
   for i = 1, #field[1] do
     io.write(i .. ' ')
@@ -23,7 +26,7 @@ function drawField(field)
   end
 end
 
-local field = lib.dump()
 
-drawField(field)
+drawField(lib.dump())
 print()
+

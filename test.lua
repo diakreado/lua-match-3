@@ -1,9 +1,37 @@
-local lu = require('luaunit')
-local findMatch = require('game-logic/findMatch')
-local findMove = require('game-logic/findMove')
-local swapItems = require('game-logic/swapItems')
+local lu         = require('luaunit')
+local lib        = require('game-logic/GameRound')
+local findMatch  = require('game-logic/findMatch')
+local findMove   = require('game-logic/findMove')
+local swapItems  = require('game-logic/swapItems')
 local verifyMove = require('game-logic/verifyMove')
 
+
+TestGameRound = {} -- class
+
+  function TestGameRound:testExample()
+    local field = {
+      {'A','B','F','A'},
+      {'A','D','B','E'},
+      {'D','B','C','A'},
+      {'D','B','B','A'}
+    }
+
+    lib.init( field )
+
+    lu.assertEquals( lib.dump(), field )
+
+    lib.move( { x=2, y=2 }, { x=1, y=2 } )
+    lib.move( { x=2, y=2 }, { x=3, y=2 } )
+
+    lu.assertEquals( lib.dump(), {
+      {'A','B','F','A'},
+      {'D','B','A','E'},
+      {'D','B','C','A'},
+      {'D','B','B','A'}
+    } )
+  end
+
+-- class TestGameRound
 
 TestFindMatch = {} -- class
 
