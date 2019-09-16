@@ -5,7 +5,7 @@ findMatch
   description - find matches in the field (2d array)
                 matches - 3 or more same items in line
 
-  arg         - field (2d array) in rectangular form
+  arg         - const field (2d array) in rectangular form
 
   return      - table with matches
                 output example - {

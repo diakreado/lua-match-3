@@ -1,6 +1,7 @@
 lu = require('luaunit')
 findMatch = require('game-logic/findMatch')
 findMove = require('game-logic/findMove')
+swapItems = require('game-logic/swapItems')
 
 TestFindMatch = {} -- class
 
@@ -36,5 +37,37 @@ TestFindMove = {} -- class
   end
   
 -- class TestFindMove
+
+
+TestSwapItems = {} -- class
+
+  function TestSwapItems:testExample()
+    local field1 = {
+      {'A','B','F','D'},
+      {'D','C','E','E'},
+      {'A','B','F','D'},
+      {'D','C','B','A'}
+    }
+    local field2 = {
+      {'A','B','F','D'},
+      {'D','C','E','E'},
+      {'A','B','F','D'},
+      {'D','C','B','A'}
+    }
+    lu.assertEquals( field1, field2 )
+    lu.assertEquals( field1[3][3], field2[3][3] )
+    lu.assertEquals( field1[3][2], field2[3][2] )
+
+    swapItems( field2, { x=3, y=3 }, { x=3, y=2 } )
+
+    lu.assertEquals( field1[3][3], field2[2][3] )
+    lu.assertEquals( field1[2][3], field2[3][3] )
+
+    swapItems( field2, { x=3, y=3 }, { x=3, y=2 } )
+
+    lu.assertEquals( field1, field2 )
+  end
+  
+-- class TestSwapItems
 
 os.exit( lu.LuaUnit.run() )

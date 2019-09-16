@@ -5,7 +5,7 @@ findMove
   description - find move in the field (2d array)
                 move - possible action for player
 
-  arg         - field (2d array) in rectangular form
+  arg         - const field (2d array) in rectangular form
 
   return      - point, which may be use for move
                 output - {

@@ -25,6 +25,8 @@ local GameRound = {} -- class
   end
 
   function GameRound:tick()
+
+    -- удаляет и сдвигает
     -- delete matches
     -- increase score
     -- add new items to the field
@@ -32,9 +34,18 @@ local GameRound = {} -- class
     print(GameRound.ySize)
   end
 
+  --[[
+    args - (from, to) are points
+            point format - {x, y}
+            where x,y are int
+  --]]
   function GameRound:move(from, to)
+
+    -- делает ход изменяет поле, если никто не против
     -- from - to = 1
     -- after change we get match 3 or more
+
+    
 
     print(GameRound.ySize)
   end
