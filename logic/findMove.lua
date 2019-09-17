@@ -17,7 +17,7 @@ findMove
 --]]
 
 return function(field)
-  
+
   if field == nil then return nil end
   if #field < 1 then return nil end
 
@@ -77,11 +77,11 @@ return function(field)
       -- find nearby items 
       if field[j+1] ~= nil and field[j][i] == field[j+1][i] then
 
-        if field[j-2][i] ~= nil and field[j][i] == field[j-2][i] then
+        if field[j-2] ~= nil and field[j][i] == field[j-2][i] then
           return { x = i,  y = j-2 }
         end
 
-        if field[j+3][i] ~= nil and field[j][i] == field[j+3][i] then
+        if field[j+3] ~= nil and field[j][i] == field[j+3][i] then
           return { x = i,  y = j+3 }
         end
 

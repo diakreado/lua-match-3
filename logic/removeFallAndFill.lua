@@ -1,6 +1,15 @@
 
 --[[
+removeFallAndFill
 
+  description - remove items, witch include in match array,
+                move items, witch have a bottom void
+                fill void by new random items
+
+  arg         - const field (2d array) in rectangular form
+              - const array with matches
+
+  return      - void
 --]]
 
 local randomLetter = require('logic/randomLetter')
