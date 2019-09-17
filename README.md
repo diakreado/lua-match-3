@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.com/mikle9997/lua-match-3.svg?branch=master)](https://travis-ci.com/mikle9997/lua-match-3)
 
-
 ## Test-dependences:
 
 | Name | Links |
