@@ -6,8 +6,6 @@ local swapItems             = require('logic/swapItems')
 local verifyMove            = require('logic/verifyMove')
 local removeFallAndFill   = require('logic/removeFallAndFill')
 
-local printF = require("cli/drawField")
-
 math.randomseed(os.time())
 
 local GameRound = {} -- class

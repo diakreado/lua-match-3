@@ -4,19 +4,32 @@ return function(field)
   local xSize = #field[1]
 
   io.write('\n     ')
-  for i = 1, ySize do
-    io.write(i .. ' ')
+  if xSize > 9 then io.write(' ') end
+  if ySize > 9 then io.write(' ') end
+  for j = 1, xSize do
+    if xSize > 9 and j < 10 then
+      io.write(j .. '  ')
+    else
+      io.write(j .. ' ')
+    end
   end
   io.write('\n   ')
-  for i = 1, ySize do
-    io.write('--')
+  if ySize > 9 then
+    io.write('  ')
+  end
+  for j = 1, xSize do
+    if xSize > 9 then io.write('---') else io.write('--') end
   end
   io.write('-\n')
-  for i = 1, xSize do
-    
-    io.write(' ' .. i .. ' | ')
-    for j = 1, ySize do
-      io.write(field[i][j] .. ' ')
+  for i = 1, ySize do
+    if ySize > 9 and i < 10 then
+      io.write('  ' .. i)
+    else
+      io.write(' ' .. i)
+    end
+    if xSize > 9 then io.write(' |  ') else io.write(' | ') end
+    for j = 1, xSize do
+      if xSize > 9 then io.write(field[i][j] .. '  ') else io.write(field[i][j] .. ' ') end
     end
     io.write('\n')
   end
