@@ -94,6 +94,12 @@ local GameRound = {} -- class
                     false - if move wasn't complete
   --]]
   function GameRound.move(from, to)
+    if from.x < 1 or to.x < 1 or
+       from.y < 1 or to.y < 1 or
+       from.x > GameRound.xSize or to.x > GameRound.xSize or
+       from.y > GameRound.ySize or to.y > GameRound.ySize then
+      return false
+    end
     if verifyMove(GameRound.field, from, to) then
       swapItems(GameRound.field, from, to)
       return true
