@@ -1,7 +1,9 @@
 
-return function(field)
+return function(field, score)
   local ySize = #field
   local xSize = #field[1]
+
+  io.write('\n score: ' .. score .. '\n')
 
   io.write('\n     ')
   if xSize > 9 then io.write(' ') end
@@ -33,4 +35,5 @@ return function(field)
     end
     io.write('\n')
   end
+  io.flush()
 end

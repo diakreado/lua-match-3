@@ -1,11 +1,4 @@
-local lib = require('logic/GameRound')
-local drawField = require('cli/drawField')
+local cli = require('cli/GameUI')
 
-lib.xSize = 5
-lib.ySize = 40
-
-lib.init()
-
-drawField(lib.dump())
-print()
-
+cli.init(10,10)
+cli.start()

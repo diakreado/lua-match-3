@@ -4,7 +4,7 @@ local findMove              = require('logic/findMove')
 local randomLetter          = require('logic/randomLetter')
 local swapItems             = require('logic/swapItems')
 local verifyMove            = require('logic/verifyMove')
-local removeFallAndFill   = require('logic/removeFallAndFill')
+local removeFallAndFill     = require('logic/removeFallAndFill')
 
 math.randomseed(os.time())
 
