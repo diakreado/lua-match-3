@@ -33,7 +33,7 @@ GameUI = {} -- class
            (dir == 'r' or dir == 'l' or dir == 'u' or dir == 'd') then
           GameUI.move(x,y,dir)
         else
-          io.write('move y x [r,l,u,d]\n')
+          io.write(' m\\mv\\move y x [r,l,u,d] - move (coordinate y,x) (right, left, up, down)\n')
           io.flush()
         end
       elseif #command > 0 and (command[1] == 't' or command[1] == 'tick') then
@@ -72,11 +72,7 @@ GameUI = {} -- class
 
     local suc = logic.move({ x=x, y=y }, secondPoint)
     print(suc)
-  end
-
-  function GameUI.tick()
-    local suc = logic.tick()
-    print(suc)
+    while(logic.tick()) do end
   end
 
   function GameUI.mix()
@@ -90,10 +86,9 @@ GameUI = {} -- class
 
   function GameUI.help()
     io.write('\n Available commands are:\n')
-    io.write('    m  - mv - move y x [r,l,u,d]\n')
-    io.write('    t  - tick\n')
-    io.write('    mx - mix\n')
-    io.write('    q  - quit\n')
+    io.write('    m\\mv\\move y x [r,l,u,d] - move (coordinate y,x) (right, left, up, down)\n')
+    io.write('    mx\\mix\n')
+    io.write('    q\\quit\n')
     io.flush()
   end
 
