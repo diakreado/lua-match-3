@@ -23,12 +23,22 @@ TestGameRound = {} -- class
     lib.move( { x=2, y=2 }, { x=1, y=2 } )
     lib.move( { x=2, y=2 }, { x=3, y=2 } )
 
-    lu.assertEquals( lib.dump(), {
+    field = lib.dump()
+
+    lu.assertEquals( field, {
       {'A','B','F','A'},
       {'D','B','A','E'},
       {'D','B','C','A'},
       {'D','B','B','A'}
     } )
+
+    lu.assertEquals(field[4][1], 'D')
+
+    lu.assertTrue(lib.tick())
+
+    field = lib.dump()
+
+    lu.assertEquals(field[4][1], 'A')    
   end
 
 -- class TestGameRound

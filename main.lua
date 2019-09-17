@@ -1,19 +1,4 @@
-local lib = require('logic/GameRound')
-local drawField = require('cli/drawField')
+local cli = require('cli/GameUI')
 
-
-lib.init({
-  {'A','C','F','A'},
-  {'D','B','A','E'},
-  {'D','B','C','A'},
-  {'D','B','C','A'}
-})
-
-drawField(lib.dump())
-print()
-
-local point = lib.mix()
-print(point.x , point.y)
-
-drawField(lib.dump())
-print()
+cli.init(10,10)
+cli.start()

@@ -4,7 +4,7 @@ local findMove              = require('logic/findMove')
 local randomLetter          = require('logic/randomLetter')
 local swapItems             = require('logic/swapItems')
 local verifyMove            = require('logic/verifyMove')
-local removeFallAndFill   = require('logic/removeFallAndFill')
+local removeFallAndFill     = require('logic/removeFallAndFill')
 
 math.randomseed(os.time())
 
@@ -12,7 +12,6 @@ local GameRound = {} -- class
 
   GameRound.ySize = 9
   GameRound.xSize = 9
-
   GameRound.score = 0
 
   GameRound.field = {}
@@ -48,10 +47,13 @@ local GameRound = {} -- class
           GameRound.field[i][j] = randomLetter()
         end
       end
+      while(GameRound.tick()) do end
       if #findMatch(GameRound.field) == 0 and findMove(GameRound.field) ~= nil then
         break
       end
     end
+
+    GameRound.score = 0
   end
 
   --[[
