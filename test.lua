@@ -1,9 +1,9 @@
 local lu         = require('luaunit')
-local lib        = require('game-logic/GameRound')
-local findMatch  = require('game-logic/findMatch')
-local findMove   = require('game-logic/findMove')
-local swapItems  = require('game-logic/swapItems')
-local verifyMove = require('game-logic/verifyMove')
+local lib        = require('logic/GameRound')
+local findMatch  = require('logic/findMatch')
+local findMove   = require('logic/findMove')
+local swapItems  = require('logic/swapItems')
+local verifyMove = require('logic/verifyMove')
 
 
 TestGameRound = {} -- class

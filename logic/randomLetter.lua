@@ -5,9 +5,11 @@ randomLetter
   return - one of six letter chosen by random
 --]]
 
+
+math.randomseed(os.time())
+
 return function()
-  letterArray = {'A','B','C','D','E','F'}
-  math.randomseed(os.clock()*1000000000000)
+  local letterArray = {'A','B','C','D','E','F'}
 
   local i = math.random(#letterArray)
   return letterArray[i]

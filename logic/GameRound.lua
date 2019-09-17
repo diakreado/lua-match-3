@@ -1,11 +1,12 @@
 
-local findMatch             = require('game-logic/findMatch')
-local findMove              = require('game-logic/findMove')
-local randomLetter          = require('game-logic/randomLetter')
-local swapItems             = require('game-logic/swapItems')
-local verifyMove            = require('game-logic/verifyMove')
-local removeFallAndCreate   = require('game-logic/removeFallAndCreate')
+local findMatch             = require('logic/findMatch')
+local findMove              = require('logic/findMove')
+local randomLetter          = require('logic/randomLetter')
+local swapItems             = require('logic/swapItems')
+local verifyMove            = require('logic/verifyMove')
+local removeFallAndCreate   = require('logic/removeFallAndCreate')
 
+math.randomseed(os.time())
 
 local GameRound = {} -- class
 
@@ -84,16 +85,15 @@ local GameRound = {} -- class
   end
 
   function GameRound.mix()
-    math.randomseed( os.time() )
     local t = GameRound.field
     local rand = math.random
 
-    for i = 1, GameRound.xSize * GameRound.ySize do
-      local y2 = rand(GameRound.ySize)
-      local y1 = rand(GameRound.ySize)
-      local x2 = rand(GameRound.xSize)
-      local x1 = rand(GameRound.xSize)
-      t[y1][x1], t[y2][x2] = t[y2][x2], t[y1][x1]
+    for i = 1, GameRound.ySize do
+      for j = 1, GameRound.xSize do
+        local y = rand(GameRound.ySize)
+        local x = rand(GameRound.xSize)
+        t[i][j], t[y][x] = t[y][x], t[i][j]          
+      end
     end
   end
 
