@@ -5,20 +5,20 @@ findMove
   description - find move in the field (2d array)
                 move - possible action for player
 
-  arg         - field (2d array) in rectangular form
+  arg         - const field (2d array) in rectangular form
 
   return      - point, which may be use for move
                 output - {
                   x,y - coordinate of the point
                         x - horizontal, y - vertical
                         coordinate start from 1
-                  nil - if point isn't exist
+                  nil - if point or arg isn't exist
                 }
 --]]
 
 return function(field)
-  local isMovePossible = false
 
+  if field == nil then return nil end
   if #field < 1 then return nil end
 
   local ySize = #field
@@ -77,11 +77,11 @@ return function(field)
       -- find nearby items 
       if field[j+1] ~= nil and field[j][i] == field[j+1][i] then
 
-        if field[j-2][i] ~= nil and field[j][i] == field[j-2][i] then
+        if field[j-2] ~= nil and field[j][i] == field[j-2][i] then
           return { x = i,  y = j-2 }
         end
 
-        if field[j+3][i] ~= nil and field[j][i] == field[j+3][i] then
+        if field[j+3] ~= nil and field[j][i] == field[j+3][i] then
           return { x = i,  y = j+3 }
         end
 
