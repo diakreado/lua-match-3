@@ -3,6 +3,10 @@ return function(field, score)
   local ySize = #field
   local xSize = #field[1]
 
+  if score == nil then
+    score = 0
+  end
+
   io.write('\n score: ' .. score .. '\n')
 
   io.write('\n     ')

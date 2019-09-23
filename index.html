@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  lol
+
+  <script src="https://cdn.jsdelivr.net/npm/lua.vm.js-dynmem-o3@0.0.3/dist/lua.vm.min.js"></script>
+ 
+  <script type="text/lua" src="/logic/GameRound.lua"></script>
+  <script type="text/lua" src="/cli/drawField.lua"></script>
+
+  <script type="text/lua">
+    local GameRound = (require "logic.GameRound")
+    local drawField = (require "cli.drawField")
+
+    GameRound.init()
+    
+    function YourLuaFunction()
+      drawField(GameRound.dump())
+    end
+
+    function hi()
+      print('lol')
+    end
+  </script>
+
+  <button onclick="executeLua('YourLuaFunction()')">Exec Lua code</button>
+  <button onclick="executeLua('hi()')">Exec Lua code1</button>
+  
+  <script> 
+    function executeLua(code) { 
+       try { L.execute(code); } catch(e) { alert(e.toString()); } 
+    } 
+ </script>
+  <!-- <script type="text/lua">
+      js.global.document:getElementById("MyBtn"):addEventListener("click", YourLuaFunction);
+  </script> -->
+
+</body>
+</html>

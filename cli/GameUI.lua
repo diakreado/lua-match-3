@@ -1,5 +1,5 @@
-local logic = require('logic/GameRound')
-local drawField = require('cli/drawField')
+local logic = require('logic.GameRound')
+local drawField = require('cli.drawField')
 
 GameUI = {} -- class
 

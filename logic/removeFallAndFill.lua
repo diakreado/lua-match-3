@@ -12,7 +12,7 @@ removeFallAndFill
   return      - void
 --]]
 
-local randomLetter = require('logic/randomLetter')
+local randomLetter = require('logic.randomLetter')
 
 local function removeItems(field, matches)
   for i = 1, #matches do
